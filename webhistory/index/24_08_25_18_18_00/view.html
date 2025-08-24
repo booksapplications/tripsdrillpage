@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tripsdrill Fanpage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* Banner */
+    .banner {
+      position: relative;
+      overflow: hidden;
+      background: #006400;
+      color: white;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    .banner-text {
+      white-space: nowrap;
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 15s linear infinite;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Content */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      margin: 0 0 10px;
+      color: #006400;
+    }
+    header p {
+      margin: 0;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #006400;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    a.button:hover {
+      background: #228B22;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin: 60px 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-text" id="banner-text">Lade Infos...</div>
+  </div>
+
+  <header>
+    <h1>Willkommen auf der Tripsdrill Fanpage</h1>
+    <p>Die (inoffizielle) Seite rund um den Erlebnispark Tripsdrill.</p>
+  </header>
+
+  <main>
+    <p>Hier findest du Informationen, Neuigkeiten und eine Übersicht aller Attraktionen.</p>
+    <a class="button" href="attraktionen.html">Zu den Attraktionen</a>
+  </main>
+
+  <footer>
+    &copy; 2025 Tripsdrill Fanpage – Fanprojekt, nicht offiziell
+  </footer>
+
+  <script>
+    // Text aus infobanner.txt laden
+    fetch('infobanner.txt')
+      .then(response => response.text())
+      .then(text => {
+        document.getElementById('banner-text').textContent = text;
+      })
+      .catch(err => {
+        document.getElementById('banner-text').textContent = "Infos konnten nicht geladen werden.";
+      });
+  </script>
+
+</body>
+</html>
