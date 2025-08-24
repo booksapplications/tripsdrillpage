@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website History – Tripsdrill Fanpage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f8f9fa;
+      color: #222;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(120deg, #006400, #228B22);
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin-top: 8px;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .date {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #006400;
+    }
+    .time {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #006400;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    a.button:hover {
+      background: #228B22;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Website History</h1>
+    <p>Alle bisherigen Versionen der Tripsdrill Fanpage</p>
+  </header>
+
+  <main id="history-list">
+    <!-- Karten werden hier per JS eingefügt -->
+  </main>
+
+  <footer>
+    &copy; 2025 Tripsdrill Fanpage – Fanprojekt
+  </footer>
+
+  <script>
+    // History aus JSON laden
+    fetch('history.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('history-list');
+        data.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <div class="date">${item.datum}</div>
+            <div class="time">${item.uhrzeit}</div>
+            <a class="button" href="${item.url}">Zur Version</a>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById('history-list').innerHTML = 
+          "<p style='color:red;'>Fehler beim Laden der History.</p>";
+      });
+  </script>
+</body>
+</html>
