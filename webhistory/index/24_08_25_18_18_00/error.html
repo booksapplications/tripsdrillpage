@@ -17,6 +17,24 @@
       height: 100vh;
       text-align: center;
     }
+
+    /* Fortschrittsbalken */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: #ddd;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #006400, #228B22);
+      transition: width 0.1s linear;
+    }
+
     h1 {
       font-size: 2rem;
       color: #006400;
@@ -49,10 +67,28 @@
   </style>
 </head>
 <body>
+  <!-- Fortschrittsbalken -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
   <h1>Seite nicht verfügbar</h1>
   <p>
     Du befindest dich im Bereich <strong>Webhistory</strong>.  
     Diese angeforderte Seite existiert hier nicht – meistens gibt es in einem History-Ordner nur die Datei <code>view.html</code>.
   </p>
+
+  <script>
+    const bar = document.getElementById("progress-bar");
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 1;
+      bar.style.width = progress + "%";
+      if (progress >= 100) {
+        clearInterval(interval);
+        window.location.href = "/tripsdrillpage/webhistory/info.html";
+      }
+    }, 100); // 100 ms → 100 Schritte = 10s
+  </script>
 </body>
 </html>
