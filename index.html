@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tripsdrill Fanpage</title>
+  <meta name="description" content="Inoffizielle Tripsdrill Fanpage – Attraktionen, Infos & Webhistory im modernen, gut lesbaren Glass-Design." />
+  <style>
+    /* ===== Design-Variablen ===== */
+    :root{
+      --brand-green: #0b6d2e;
+      --brand-green-2:#14833a;
+      --cream: #f4f1ea;
+      --ink: #1d1e20;
+      --muted: #5b605b;
+      --glass-bg: rgba(255,255,255,0.18);
+      --glass-brd: rgba(255,255,255,0.32);
+      --glass-dark: rgba(0,0,0,0.25);
+      --radius-xl: 22px;
+      --radius-md: 14px;
+      --shadow-1: 0 10px 28px rgba(0,0,0,0.18);
+      --shadow-2: 0 18px 40px rgba(0,0,0,0.22);
+      --maxw: 1200px;
+    }
+
+    /* ===== Reset ===== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color:var(--ink);
+      background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
+      line-height:1.6;
+    }
+    img{max-width:100%;display:block}
+
+    .container{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
+    .glass{
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-brd);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-1);
+    }
+    @supports not (backdrop-filter: blur(10px)) { .glass{ background: rgba(255,255,255,0.9) } }
+
+    /* ===== Topbar ===== */
+    .topbar-wrap{
+      position: sticky; top:0; z-index:50;
+      padding: 14px 0;
+      background: linear-gradient(0deg, rgba(255,255,255,0.45), rgba(255,255,255,0.45));
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);}
+    .brand-badge{width:38px;height:38px;border-radius:10px;background: linear-gradient(135deg, var(--brand-green), var(--brand-green-2)); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 6px 16px rgba(0,0,0,0.15);}
+    .brand h1{font-size:1.1rem;line-height:1.1;margin:0;font-weight:700}
+    nav a{color:var(--ink); text-decoration:none; font-weight:600; padding:10px 14px; border-radius:12px;}
+    nav a:hover, nav a:focus-visible{ background: rgba(0,0,0,0.06); outline:none; }
+    .cta{background: linear-gradient(135deg, var(--brand-green), var(--brand-green-2)); color:#fff; border-radius:14px; padding:10px 14px; font-weight:700; box-shadow: 0 6px 14px rgba(20,131,58,0.28);}
+    .cta:hover, .cta:focus-visible{ filter:brightness(1.03) saturate(1.05); outline:none }
+
+    /* ===== Hero ===== */
+    .hero{position:relative; isolation:isolate; margin:22px auto 0;}
+    .hero .bg{position:relative; border-radius: var(--radius-xl); overflow:hidden; min-height: 56vh;
+      background: linear-gradient(0deg, rgba(0,0,0,0.30), rgba(0,0,0,0.30)), url('/resources/hero-tripsdrill.jpg') center/cover no-repeat; box-shadow: var(--shadow-2);}
+    .hero .content{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:30px;}
+    .hero .panel{max-width:820px;width:min(95%,820px); padding:28px 28px;}
+    .hero h2{margin:0 0 10px; font-size: clamp(2rem,4vw,3rem); line-height:1.1; color:#fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
+    .hero p{margin:0 0 18px; color:#f4f4f4; font-size: clamp(1rem,1.6vw,1.15rem);}
+    .hero .actions{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{display:inline-block;text-decoration:none;font-weight:700;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,0.5);color:#fff;background: rgba(255,255,255,0.15);backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);transition: transform .15s ease, background .15s ease;}
+    .btn:hover,.btn:focus-visible{ transform: translateY(-1px); background: rgba(255,255,255,0.25); outline:none }
+    .btn-primary{border:none; background: linear-gradient(135deg, var(--brand-green), var(--brand-green-2)); box-shadow: 0 8px 22px rgba(20,131,58,0.28);}
+
+    /* ===== Info-Stripes ===== */
+    .stripe{margin:26px auto 0; padding:14px 0;}
+    .stripe .inner{display:flex; gap:12px; align-items:center; justify-content:center; padding:10px 14px; color:#102012;}
+    .dot{width:10px;height:10px;border-radius:999px;background:var(--brand-green); box-shadow: 0 0 0 3px rgba(20,131,58,0.18);}
+
+    /* ===== Sections ===== */
+    .section{margin:34px 0}
+    .cards{display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));}
+    .card{padding:18px; display:flex; flex-direction:column; gap:10px; border-radius: var(--radius-md);}
+    .card h3{ margin:0; font-size:1.15rem; color:#0e2617 }
+    .card p{ margin:0; color:var(--muted) }
+    .media{aspect-ratio:16/9;border-radius:12px;overflow:hidden; background: linear-gradient(0deg, rgba(0,0,0,0.20), rgba(0,0,0,0.20)), url('/resources/placeholder-1.jpg') center/cover no-repeat;}
+    .media.coaster{ background-image: linear-gradient(0deg, rgba(0,0,0,0.20), rgba(0,0,0,0.20)), url('/resources/placeholder-coaster.jpg');}
+    .media.family{ background-image: linear-gradient(0deg, rgba(0,0,0,0.20), rgba(0,0,0,0.20)), url('/resources/placeholder-family.jpg');}
+    .media.wild{ background-image: linear-gradient(0deg, rgba(0,0,0,0.20), rgba(0,0,0,0.20)), url('/resources/placeholder-wild.jpg');}
+
+    /* ===== Footer ===== */
+    footer{margin: 40px 0 30px; color:#33423a; font-size:0.95rem; text-align:center;}
+
+    @media (max-width: 640px){ .brand h1{font-size:1rem} nav a{padding:8px 10px} .hero .panel{ padding: 20px } }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar-wrap">
+    <div class="topbar container">
+      <a class="brand" href="/">
+        <div class="brand-badge" aria-hidden="true"></div>
+        <h1>Tripsdrill Fanpage</h1>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="/">Start</a>
+        <a href="/attraktionen.html">Attraktionen</a>
+        <a href="/tripsdrillpage/webhistory/info.html" class="cta">Webhistory</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="bg"></div>
+    <div class="content">
+      <div class="panel glass">
+        <h2>Erlebnispark Tripsdrill – klar & lesbar im Glass-Design</h2>
+        <p>
+          Willkommen auf der inoffiziellen Fanpage. Entdecke Attraktionen, Tipps und unsere Webhistory.
+          Das Layout ist bewusst ruhig gehalten: hohe Kontraste, größere Schriften, dezente Effekte.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/attraktionen.html">Attraktionen entdecken</a>
+          <a class="btn" href="/tripsdrillpage/webhistory/info.html">Zur Webhistory</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lesbarer Hinweis -->
+  <div class="stripe container">
+    <div class="inner glass" role="status" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Hinweis: Diese Fanpage steht in keiner offiziellen Verbindung zum Erlebnispark Tripsdrill.</span>
+    </div>
+  </div>
+
+  <!-- Karten & Grundlegende Infos -->
+  <section class="section container">
+    <div class="cards">
+      <article class="card glass">
+        <div class="media coaster" aria-hidden="true"></div>
+        <h3>Achterbahnen</h3>
+        <p>Daten & Fakten zu rasanten Bahnen – kompakt und gut lesbar aufbereitet.</p>
+      </article>
+
+      <article class="card glass">
+        <div class="media family" aria-hidden="true"></div>
+        <h3>Familien-Highlights</h3>
+        <p>Ruhigere Fahrten, Spielbereiche und Empfehlungen für alle Altersstufen.</p>
+      </article>
+
+      <article class="card glass">
+        <div class="media wild" aria-hidden="true"></div>
+        <h3>Wildparadies</h3>
+        <p>Tiere, Wege & Aussichtspunkte – ohne Informationsflut, klar strukturiert.</p>
+      </article>
+
+      <article class="card glass">
+        <h3>
