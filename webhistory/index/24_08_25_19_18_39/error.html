@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webhistory Info – Tripsdrill Fanpage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      line-height: 1.6;
+      padding-top: 40px;
+    }
+
+    /* Fortschrittsbalken */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: #ddd;
+      overflow: hidden;
+      z-index: 100;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #006400, #228B22);
+      transition: width 0.1s linear;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #006400;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    section {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    section h2 {
+      color: #006400;
+      margin-top: 0;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #006400;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.2s;
+      margin-top: 15px;
+    }
+    a.button:hover {
+      background: #228B22;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin: 50px 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fortschrittsbalken -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <header>
+    <h1>Webhistory</h1>
+    <p>Die geforderte Seite ist nicht verfügbar.  .</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Was ist die Webhistory?</h2>
+      <p>
+        Die Webhistory ist eine Sammlung aller bisherigen Versionen unserer Tripsdrill Fanpage.  
+        Jede Version wurde als eigene Seite gespeichert, sodass man nachvollziehen kann, wie sich die Seite im Laufe der Zeit verändert hat.
+      </p>
+    </section>
+
+    <section>
+      <h2>Wie rufe ich alte Versionen auf?</h2>
+      <p>
+        Alle Versionen findest du in der Übersicht auf der <a href="/history.html">History-Seite</a>.  
+        Jede Version besteht in der Regel nur aus der Datei <code>view.html</code>, die den Zustand der Seite zu diesem Zeitpunkt zeigt.
+      </p>
+    </section>
+
+    <section>
+      <h2>Warum funktionieren manche Buttons nicht?</h2>
+      <p>
+        In manchen History-Ordnern existieren nur bestimmte Dateien.  
+        Wenn du auf einen Button klickst, der eine nicht vorhandene Datei aufrufen würde, landest du auf der speziellen Info-Seite.  
+        So weißt du sofort, dass diese Version nur eingeschränkt verfügbar ist.
+      </p>
+      <a class="button" href="/history.html">Zur History-Übersicht</a>
+    </section>
+
+    <section>
+      <h2>Hinweis</h2>
+      <p>
+        Lies dir die Informationen in Ruhe durch, der Balken oben zeigt dir an, wann du automatisch zur History-Übersicht weitergeleitet wirst.  
+        Du hast genug Zeit, alles zu erfassen.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Tripsdrill Fanpage – Fanprojekt
+  </footer>
+
+  <script>
+    const bar = document.getElementById("progress-bar");
+    let progress = 0;
+    const steps = 300; // 30 Sekunden
+    const interval = 100; // ms pro Schritt
+    const timer = setInterval(() => {
+      progress += 100 / steps;
+      bar.style.width = progress + "%";
+      if (progress >= 100) {
+        clearInterval(timer);
+        window.location.href = "/tripsdrillpage/webhistory/info.html";
+      }
+    }, interval);
+  </script>
+</body>
+</html>
