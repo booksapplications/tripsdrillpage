@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attraktionen – Tripsdrill Fanpage</title>
+  <link rel="stylesheet" href="/resources/sheet.css">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      margin: 0;
+    }
+
+    /* Warnleiste oben */
+    .warning-bar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #ffcc00;
+      color: #222;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      background: linear-gradient(120deg, #006400, #228B22);
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    header p {
+      margin-top: 8px;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      object-fit: cover;
+      height: 160px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #006400;
+      font-size: 1.3rem;
+    }
+    .card p {
+      margin: 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin: 50px 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="warning-bar">
+  ⚠️ Achtung: Diese neue Funktion befindet sich aktuell in der Entwicklung. Einige Elemente funktionieren möglicherweise noch nicht!
+</div>
+
+<header>
+  <h1>Tripsdrill Attraktionen</h1>
+  <p>Entdecke alle Attraktionen im Erlebnispark Tripsdrill</p>
+</header>
+
+<main id="attraktionen-grid">
+  <!-- Attraktionen-Karten werden hier per JS eingefügt -->
+</main>
+
+<footer>
+  &copy; 2025 Tripsdrill Fanpage – Fanprojekt
+</footer>
+
+<script>
+  // IDs der Attraktionen (müssen in sheet.css definiert sein)
+  const attrIDs = ["karussell","achterbahn","wildpark"];
+
+  const root = getComputedStyle(document.documentElement);
+
+  const attraktionen = attrIDs.map(id => ({
+    name: root.getPropertyValue(`--attr-${id}-name`).replace(/"/g,'').trim(),
+    beschreibung: root.getPropertyValue(`--attr-${id}-desc`).replace(/"/g,'').trim(),
+    bild: root.getPropertyValue(`--attr-${id}-img`).replace(/"/g,'').trim()
+  }));
+
+  const grid = document.getElementById('attraktionen-grid');
+
+  attraktionen.forEach(attr => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${attr.bild}" alt="${attr.name}">
+      <h3>${attr.name}</h3>
+      <p>${attr.beschreibung}</p>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
