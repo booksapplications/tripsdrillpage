@@ -6,69 +6,89 @@
   <title>Attraktionen – Tripsdrill Fanpage</title>
   <link rel="stylesheet" href="/resources/sheet.css">
   <style>
+    /* Hintergrund mit Apple-Style Gradient */
     body {
-      font-family: system-ui, sans-serif;
-      background: #f5f5f5;
-      color: #222;
       margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      background-attachment: fixed;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    /* Warnleiste oben */
+    /* Glass-Effekt */
+    .glass {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* Warnleiste */
     .warning-bar {
       position: sticky;
       top: 0;
-      width: 100%;
-      background: #ffcc00;
-      color: #222;
+      margin: 10px;
+      padding: 12px;
       text-align: center;
-      padding: 10px 0;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #222;
+      background: rgba(255, 200, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
       z-index: 1000;
     }
 
     header {
+      margin: 30px auto 10px;
       text-align: center;
-      padding: 50px 20px 20px;
-      background: linear-gradient(120deg, #006400, #228B22);
-      color: white;
+      padding: 40px 20px;
+      max-width: 800px;
     }
     header h1 {
+      font-size: 2.5rem;
       margin: 0;
-      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     header p {
-      margin-top: 8px;
+      font-size: 1.1rem;
+      margin-top: 10px;
       opacity: 0.9;
     }
 
     main {
+      flex: 1;
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
+      margin: 30px auto;
+      padding: 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
     }
 
     .card {
-      background: white;
-      border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform 0.2s, box-shadow 0.2s;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
     }
 
     .card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 14px;
       margin-bottom: 15px;
       object-fit: cover;
       height: 160px;
@@ -76,44 +96,45 @@
 
     .card h3 {
       margin: 0 0 10px;
-      color: #006400;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
+      color: #fff;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
     }
     .card p {
-      margin: 0;
-      color: #555;
       font-size: 0.95rem;
+      color: #f0f0f0;
+      opacity: 0.9;
     }
 
     footer {
       text-align: center;
       font-size: 0.9rem;
-      color: #777;
-      margin: 50px 0 20px;
+      opacity: 0.8;
+      margin: 40px 0 20px;
     }
   </style>
 </head>
 <body>
 
 <div class="warning-bar">
-  ⚠️ Achtung: Diese neue Funktion befindet sich aktuell in der Entwicklung. Einige Elemente funktionieren möglicherweise noch nicht!
+  ⚠️ Achtung: Diese Funktion befindet sich noch in Entwicklung – einige Bereiche könnten nicht funktionieren!
 </div>
 
-<header>
+<header class="glass">
   <h1>Tripsdrill Attraktionen</h1>
-  <p>Entdecke alle Attraktionen im Erlebnispark Tripsdrill</p>
+  <p>Entdecke alle Attraktionen – im modernen Glass-Design</p>
 </header>
 
 <main id="attraktionen-grid">
-  <!-- Attraktionen-Karten werden hier per JS eingefügt -->
+  <!-- Karten kommen hier rein -->
 </main>
 
-<footer>
-  &copy; 2025 Tripsdrill Fanpage – Fanprojekt
+<footer class="glass">
+  <p>&copy; 2025 Tripsdrill Fanpage – Fanprojekt</p>
 </footer>
 
 <script>
-  // IDs der Attraktionen (müssen in sheet.css definiert sein)
+  // Attraktionen IDs (stehen in sheet.css als --attr-... Variablen)
   const attrIDs = ["karussell","achterbahn","wildpark"];
 
   const root = getComputedStyle(document.documentElement);
@@ -128,7 +149,7 @@
 
   attraktionen.forEach(attr => {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card glass';
     card.innerHTML = `
       <img src="${attr.bild}" alt="${attr.name}">
       <h3>${attr.name}</h3>
