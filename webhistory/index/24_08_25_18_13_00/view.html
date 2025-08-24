@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripsdrill Fanpage</title>
+    <style>
+        /* Grundlegendes Styling */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #006400;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #228B22;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            background-image: url('https://www.tripsdrill.de/fileadmin/_processed_/csm_Headerpark_Tripsdrill_1920x1080_63e6e8c3e7.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #006400;
+            margin-bottom: 20px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #006400;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tripsdrill Fanpage</h1>
+        <p>Alles über den Erlebnispark Tripsdrill</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Attraktionen</a>
+        <a href="#">Infos</a>
+        <a href="#">Kontakt</a>
+    </nav>
+
+    <div class="hero">
+        Dein Tripsdrill-Abenteuer beginnt hier!
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <h2>Highlights im Park</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Karussell</h3>
+                    <p>Ein Spaß für die ganze Familie!</p>
+                </div>
+                <div class="card">
+                    <h3>Achterbahn</h3>
+                    <p>Adrenalin pur bei unseren rasanten Fahrten!</p>
+                </div>
+                <div class="card">
+                    <h3>Wildpark</h3>
+                    <p>Entdecke die Tiere und Natur im Park.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Neuigkeiten</h2>
+            <p>Hier erfährst du die neuesten Attraktionen und Events in Tripsdrill!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Tripsdrill Fanpage | <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+        <p>Folge uns: <a href="#">Instagram</a> | <a href="#">Facebook</a></p>
+    </footer>
+</body>
+</html>
