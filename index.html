@@ -5,199 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tripsdrill Fanpage</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* Hintergrund */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      background-attachment: fixed;
       height: 100vh;
-      overflow-x: hidden;
-      color: #fff;
-    }
-
-    /* 🌈 Hintergrund: animierter Farbverlauf */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4facfe, #43e97b, #f9d423);
-      background-size: 1000% 1000%;
-      animation: gradientShift 20s ease infinite;
-      z-index: -1;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Glassmorphism */
-    .glass {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 20px; left: 50%;
-      transform: translateX(-50%);
       display: flex;
-      gap: 25px;
-      padding: 12px 25px;
-      font-weight: 600;
-      z-index: 10;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: opacity 0.3s;
-    }
-    nav a:hover { opacity: 0.7; }
-
-    /* Hero Section */
-    header {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+    }
+
+    /* Glass Container */
+    .container {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 2rem 3rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       text-align: center;
-      height: 100vh;
-      padding: 20px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-      animation: fadeDown 1.2s ease;
-    }
-
-    header p {
-      font-size: 1.2rem;
+      color: #fff;
       max-width: 600px;
-      margin-bottom: 30px;
-      opacity: 0.9;
-      animation: fadeUp 1.5s ease;
+      width: 90%;
+      animation: fadeIn 1.5s ease;
     }
 
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ffecd2, #fcb69f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    @keyframes fadeUp {
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin: 5px;
-      border-radius: 12px;
-      font-weight: 600;
-      color: white;
-      text-decoration: none;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      transition: all 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.35);
-    }
-
-    /* Cards Section */
-    main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .card {
-      padding: 25px;
-      text-align: center;
-      animation: fadeUp 1.2s ease;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-    }
-
-    .card h3 {
-      margin-bottom: 15px;
-      font-size: 1.4rem;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      opacity: 0.9;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      opacity: 0.8;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Tripsdrill Fanpage</h1>
+    <p>Willkommen zur inoffiziellen Fanpage von Tripsdrill.  
+       Entdecke Attraktionen, Geschichte und unsere eigene Webhistory!</p>
 
-  <!-- Navigation -->
-  <nav class="glass">
-    <a href="#">Start</a>
-    <a href="#">Attraktionen</a>
-    <a href="#">Über Uns</a>
-    <a href="#">Kontakt</a>
-  </nav>
-
-  <!-- Hero Section -->
-  <header>
-    <h1>Willkommen bei der Tripsdrill Fanpage</h1>
-    <p>Die inoffizielle, moderne und interaktive Fan-Website zum Erlebnispark Tripsdrill – im schicken Glass-Design mit iOS-Feeling!</p>
-    <div>
-      <a href="#attraktionen" class="btn glass">Attraktionen entdecken</a>
-      <a href="#kontakt" class="btn glass">Kontakt</a>
+    <div class="buttons">
+      <a href="/attraktionen.html" class="btn">Attraktionen</a>
+      <a href="/tripsdrillpage/webhistory/info.html" class="btn">Webhistory</a>
+      <a href="/about.html" class="btn">Über Uns</a>
     </div>
-  </header>
-
-  <!-- Cards Section -->
-  <main id="attraktionen">
-    <div class="card glass">
-      <h3>🚀 Achterbahnen</h3>
-      <p>Alle Infos zu den spannenden Achterbahnen im Park – mit Details, Bildern und Fakten.</p>
-    </div>
-    <div class="card glass">
-      <h3>🎡 Familienattraktionen</h3>
-      <p>Erlebnis für Groß und Klein – entdecke die zahlreichen Familien-Highlights.</p>
-    </div>
-    <div class="card glass">
-      <h3>🌳 Wildparadies</h3>
-      <p>Wölfe, Bären und mehr – Natur hautnah erleben.</p>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="glass" id="kontakt">
-    <p>&copy; 2025 Tripsdrill Fanpage – Ein Fanprojekt in Glass-Design</p>
-  </footer>
-
+  </div>
 </body>
 </html>
