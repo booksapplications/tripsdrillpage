@@ -28,6 +28,8 @@
     background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
     color: var(--text-dark);
     overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
   }
 
   a{text-decoration:none; color:inherit;}
@@ -94,7 +96,7 @@
   /* Footer */
   footer{margin:50px 0 30px; text-align:center; color:#33423a; font-size:0.95rem;}
 
-  /* Blur & Popup Styles */
+  /* Blur & Popup Styles (Exakt wie bei Dark Canvas) */
   #content-wrapper {
       transition: filter 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -102,19 +104,46 @@
       filter: blur(12px);
       pointer-events: none;
   }
-  .popup-transition {
+  
+  #status-popup {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9999;
+      padding: 20px;
+  }
+  #status-popup.visible {
+      opacity: 1;
+      pointer-events: auto;
   }
   .popup-content {
-      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #020617;
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 24px;
+      max-width: 550px;
+      width: 100%;
+      text-align: left;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      position: relative;
       transform: scale(0.95);
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  #status-popup.opacity-100 .popup-content {
+  #status-popup.visible .popup-content {
       transform: scale(1);
   }
 </style>
 </head>
-<body class="relative">
+<body>
 
   <!-- CONTENT WRAPPER -->
   <div id="content-wrapper">
@@ -176,32 +205,32 @@
   </div>
 
   <!-- POP-UP -->
-  <div id="status-popup" class="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none popup-transition z-50 p-4">
-      <div class="popup-content bg-[#020617] text-white border border-white/15 p-8 md:p-10 rounded-3xl max-w-xl w-full text-left shadow-2xl relative font-sans">
+  <div id="status-popup">
+      <div class="popup-content">
           
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-[9px] font-black uppercase tracking-[0.4em] px-4 py-1 rounded-full text-white shadow-md">
+          <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0b6d2e; font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.4em; padding: 6px 16px; border-radius: 9999px; color: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
               Eingestellt & Archiviert
           </div>
           
-          <div class="mt-2 mb-6 text-center">
-              <h3 class="text-2xl font-black italic uppercase mb-2">Projekt beendet 📉</h3>
-              <p class="text-xs text-gray-400 uppercase tracking-wider">Zeit für ehrliche Worte.</p>
+          <div style="margin-top: 10px; margin-bottom: 24px; text-align: center;">
+              <h3 style="font-size: 24px; font-weight: 900; font-style: italic; text-transform: uppercase; margin: 0 0 8px 0; color: #ffffff;">Projekt beendet 📉</h3>
+              <p style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">Zeit für ehrliche Worte.</p>
           </div>
 
           <!-- Informationsblöcke -->
-          <div class="space-y-4 mb-8 text-xs text-gray-300">
-              <div class="bg-white/5 border border-white/10 p-4 rounded-2xl">
-                  <p class="font-bold text-white mb-1 uppercase tracking-wide">💭 Warum gibt es das nicht mehr?</p>
-                  <p class="text-gray-400 leading-relaxed">Ganz ehrlich: Irgendwann war die Luft raus und die Motivation weg. Das Projekt ist in Vergessenheit geraten, weil es am Ende einfach nicht das verkörpert hat, was ich ursprünglich erreichen wollte – es war schlicht nicht persönlich genug.</p>
+          <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; font-size: 12px; color: #cbd5e1;">
+              <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 16px; border-radius: 16px;">
+                  <p style="font-weight: 700; color: #ffffff; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.05em;">💭 Warum gibt es das nicht mehr?</p>
+                  <p style="color: #94a3b8; margin: 0; line-height: 1.6;">Ganz ehrlich: Irgendwann war die Luft raus und die Motivation weg. Das Projekt ist in Vergessenheit geraten, weil es am Ende einfach nicht das verkörpert hat, was ich ursprünglich erreichen wollte – es war schlicht nicht persönlich genug.</p>
               </div>
 
-              <div class="bg-white/5 border border-white/10 p-4 rounded-2xl">
-                  <p class="font-bold text-white mb-1 uppercase tracking-wide">🚀 Der Neuanfang</p>
-                  <p class="text-gray-400 leading-relaxed">Genau aus diesem Grund zieht das Ganze jetzt zu <span class="text-emerald-400 font-bold">projectzwim</span> um. Besser, persönlicher und mit Projekten, hinter denen man wirklich steht.</p>
+              <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 16px; border-radius: 16px;">
+                  <p style="font-weight: 700; color: #ffffff; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.05em;">🚀 Der Neuanfang</p>
+                  <p style="color: #94a3b8; margin: 0; line-height: 1.6;">Genau aus diesem Grund zieht das Ganze jetzt zu <span style="color: #4ade80; font-weight: 700;">projectzwim</span> um. Besser, persönlicher und mit Projekten, hinter denen man wirklich steht.</p>
               </div>
           </div>
           
-          <a href="https://projectzwim.github.io/home" class="block w-full text-center bg-emerald-600 text-white font-black text-xs uppercase tracking-[0.3em] py-4 rounded-xl hover:bg-emerald-500 transition-all shadow-lg">
+          <a href="https://projectzwim.github.io/home" style="display: block; width: 100%; text-align: center; background: #0b6d2e; color: #ffffff; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; padding: 16px; border-radius: 12px; transition: background 0.3s; box-shadow: 0 10px 25px -5px rgba(11, 109, 46, 0.4);">
               Ab zu projectzwim ➔
           </a>
       </div>
@@ -210,10 +239,7 @@
   <script>
       setTimeout(() => {
           document.getElementById('content-wrapper').classList.add('is-blurred');
-          
-          const popup = document.getElementById('status-popup');
-          popup.classList.remove('opacity-0', 'pointer-events-none');
-          popup.classList.add('opacity-100');
+          document.getElementById('status-popup').classList.add('visible');
       }, 1000);
   </script>
 
